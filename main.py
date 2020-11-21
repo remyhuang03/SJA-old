@@ -8,5 +8,12 @@
 
 from tkinter import *
 
-top = Tkinter()
+#主窗口
+top = Tk()
+top.geometry("1024x720+150+0")
+top.title("SJA ( V0.0 By孤言 )")
+top.iconbitmap("win_icon.ico")
+top.config(bg='white')
+top.resizable(0,0)
 top.mainloop()
+
