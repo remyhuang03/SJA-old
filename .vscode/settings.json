@@ -1,0 +1,11 @@
+//{
+//    "python.linting.enabled": false
+//}
+{
+    "python.linting.flake8Enabled": true,
+    "python.formatting.provider": "autopep8",
+    "python.linting.flake8Args": [ "--max-line-length=1000",
+        "--extend-ignore=F405,F403,E265,E221,W292,W605,E225,E231,E303,E302,E261,E305,W391,E251"],
+    "python.linting.pylintEnabled": false,
+    "python.pythonPath": "C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39\\python.exe"
+}

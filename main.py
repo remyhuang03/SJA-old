@@ -5,3 +5,8 @@
 # 对滥用本分析器造成的一切后果，作者概不负责。
 # 版权声明：
 # 未经原作者许可，严禁将该程序用户商业用途。
+
+from tkinter import *
+
+top = Tkinter()
+top.mainloop()
