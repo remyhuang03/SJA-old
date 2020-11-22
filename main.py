@@ -17,3 +17,5 @@ top.config(bg='white')
 top.resizable(0,0)
 top.mainloop()
 
+fore_title=BitmapImage
+
