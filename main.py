@@ -8,14 +8,18 @@
 
 from tkinter import *
 
-#主窗口
+# 主窗口
 top = Tk()
 top.geometry("1024x720+150+0")
 top.title("SJA ( V0.0 By孤言 )")
 top.iconbitmap("win_icon.ico")
 top.config(bg='white')
-top.resizable(0,0)
+top.resizable(0, 0)
+
+# 标题
+img_title = BitmapImage(file="\\img\\fore_title.pg")
+lb_title = Label(image=img_title, text='test')
+lb_title.place(x=0, y=0)
+
+
 top.mainloop()
-
-fore_title=BitmapImage
-
