@@ -18,8 +18,8 @@ top.resizable(0, 0)
 
 # 侧边线
 cv = Canvas(top, bg='white', width=1024, height=720)
-side_line = cv.create_line(180, 0, 180, 720, fill='grey', width=3)
-cv.place(x=200, y=200)
+side_line = cv.create_line(250, 130, 250, 690, fill='grey', width=3)
+cv.place(x=0, y=0)
 
 # 标题
 img_title = PhotoImage(file="fore_title.png")
