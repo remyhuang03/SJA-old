@@ -8,6 +8,13 @@
 
 from tkinter import *
 
+# 侧边栏宽度：250
+# 上边栏宽度：150左右
+
+#菜单被点击函数
+def menuclicked():
+    pass
+
 # 主窗口
 top = Tk()
 top.geometry("1024x720+150+0")
@@ -23,13 +30,11 @@ cv.place(x=0, y=0)
 
 # 标题
 img_title = PhotoImage(file="fore_title.png")
-lb_title = Label(image=img_title)
-lb_title.place(x=-2, y=0)
+Label(image=img_title).place(x=-2, y=0)
 
 # 状态侧边选单
 img_side_menu = PhotoImage(file="side_menu.png")
-lb_title = Label(image=img_side_menu)
-lb_title.place(x=-2, y=150)
+Label(image=img_side_menu,bd=0,cmd=menuclicked()).place(x=20, y=160)
 
 
 top.mainloop()
