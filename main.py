@@ -27,9 +27,9 @@ lb_title = Label(image=img_title)
 lb_title.place(x=-2, y=0)
 
 # 状态侧边选单
-class side_btn:
-    def show(self, index):
-        raw_y = 160;
+img_side_menu = PhotoImage(file="side_menu.png")
+lb_title = Label(image=img_side_menu)
+lb_title.place(x=-2, y=150)
 
 
 top.mainloop()
