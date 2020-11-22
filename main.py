@@ -7,6 +7,7 @@
 # 未经原作者许可，严禁将该程序用户商业用途。
 
 from tkinter import *
+from PIL import Image,ImageTk
 
 # 主窗口
 top = Tk()
@@ -17,7 +18,8 @@ top.config(bg='white')
 top.resizable(0, 0)
 
 # 标题
-img_title = BitmapImage(file="\\img\\fore_title.pg")
+img_title = Image.open("fore_title.png")
+#img_title = img_title.resize((400,400))
 lb_title = Label(image=img_title, text='test')
 lb_title.place(x=0, y=0)
 
