@@ -7,7 +7,6 @@
 # 未经原作者许可，严禁将该程序用户商业用途。
 
 from tkinter import *
-from PIL import Image,ImageTk
 
 # 主窗口
 top = Tk()
@@ -17,9 +16,14 @@ top.iconbitmap("win_icon.ico")
 top.config(bg='white')
 top.resizable(0, 0)
 
+# 侧边线
+cv = Canvas(top,bg='white',bd=10)
+side_line = cv.create_line(180, 0, 180, 720,fill='grey',width=4)
+cv.place(x=0,y=0)
+
 # 标题
 img_title = PhotoImage(file="fore_title.png")
-lb_title = Label(image=img_title) 
+lb_title = Label(image=img_title)
 lb_title.place(x=-2, y=0)
 
 
