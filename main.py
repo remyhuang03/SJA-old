@@ -13,11 +13,28 @@ from tkinter import *
 # 上边栏宽度：150左右
 
 # 菜单图片字典
-menu_dic = {0: '', 1: '', 2: ''}
+menu_dic = {0: 'add_file', 1: 'report', 2: 'setting'}
 
-
+menu_chosen = 0
 def menuclicked(event):  # 菜单被点击函数
-    event.y
+    global menu_chosen
+    y=event.y # 菜单：160-200(加载文件), 240-300（分析报告）,340-400（设置）
+
+    is_chson = FALSE
+
+    # ✨判断菜单出现位置
+    if 160<=y<=200:
+        menu_chosen=0
+        is_chson = TRUE
+    elif 240<=y<=300:
+        menu_chosen=1
+        is_chson = TRUE
+    elif 340<=y<=400:
+        menu_chosen=2
+        is_chson = TRUE
+
+    if is_chson:
+        refresh_interface(menu_chosen)
 
 
 # 主窗口
@@ -30,7 +47,7 @@ top.resizable(0, 0)
 
 # 侧边线
 cv = Canvas(top, bg='white', width=1024, height=720)
-side_line = cv.create_line(250, 130, 250, 690, fill='grey', width=3)
+cv.create_line(250, 130, 250, 690, fill='grey', width=3)
 cv.place(x=0, y=0)
 
 # 标题
