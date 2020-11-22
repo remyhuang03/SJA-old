@@ -6,14 +6,19 @@
 # 版权声明：
 # 未经原作者许可，严禁将该程序用户商业用途。
 
+
 from tkinter import *
 
 # 侧边栏宽度：250
 # 上边栏宽度：150左右
 
-#菜单被点击函数
-def menuclicked():
-    pass
+# 菜单图片字典
+menu_dic = {0: '', 1: '', 2: ''}
+
+
+def menuclicked(event):  # 菜单被点击函数
+    event.y
+
 
 # 主窗口
 top = Tk()
@@ -34,7 +39,8 @@ Label(image=img_title).place(x=-2, y=0)
 
 # 状态侧边选单
 img_side_menu = PhotoImage(file="side_menu.png")
-Label(image=img_side_menu,bd=0,cmd=menuclicked()).place(x=20, y=160)
-
+menu = Label(image=img_side_menu, bd=0)
+menu.place(x=20, y=160)
+menu.bind('<Button-1>', menuclicked)
 
 top.mainloop()
