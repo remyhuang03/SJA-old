@@ -26,5 +26,10 @@ img_title = PhotoImage(file="fore_title.png")
 lb_title = Label(image=img_title)
 lb_title.place(x=-2, y=0)
 
+# 状态侧边选单
+class side_btn:
+    def show(self, index):
+        raw_y = 160;
+
 
 top.mainloop()
