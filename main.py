@@ -18,9 +18,9 @@ top.config(bg='white')
 top.resizable(0, 0)
 
 # 标题
-img_title = PhotoImage("fore_title.png")
-lb_title = Label(image=img_title, text='test')
-lb_title.place(x=0, y=0)
+img_title = PhotoImage(file="fore_title.png")
+lb_title = Label(image=img_title) 
+lb_title.place(x=-2, y=0)
 
 
 top.mainloop()
