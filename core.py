@@ -1,9 +1,9 @@
+"""
+scratch程序解析模块
+参见Scratch对象的文档了解如何使用它
+"""
 
-# 解析json的方式
-# 1. 正则表达式查找
 import re
-
-# 2. json 库解析
 import json
 
 
@@ -12,7 +12,8 @@ import json
 opcode = {
     "looks": "外观",
     "control": "控制",
-    "motion": "移动"
+    "motion": "移动",
+    "other": "其它"
 }
 
 
@@ -36,6 +37,7 @@ class Scratch:
             self.codes[i] = 0   # 初始为0
         self.program = ""
         self._debug = {}
+        self.err = []   # 错误信息
 
     def load(self, program=""):
         """
@@ -52,21 +54,39 @@ class Scratch:
         使用正则表达式解析，json_parse会使用json模块解析(未来加入)
         """
         for i in opcode.keys():
-            pattern = f'"opcode":"{i}_'
+            pattern = r'"opcode":\s{0,1}"'+f'{i}_'
             # 使用正则找到某种分类的积木个数，并存到codes字典里面。
             self.codes[i] = len(re.findall(pattern, self.program))
             self._debug[i] = pattern
 
     def json_parse(self):
         """
-        TODO: 使用json模块解析
         此方法暂时不可用，请使用re_parse！
         """
-        pass
+        # 把json转换成python类型
+        self.progpy = json.loads(self.program)["targets"]
+        # 我的天那这json一层一层的真是太不像话了
+        # j遍历角色，i遍历代码块
+        for j in self.progpy:
+            if not j["isStage"]:
+                for i in j["blocks"]:
+                    self.codes[self.judge_opcode(py["targets"][1]["blocks"][i]["opcode"])] += 1
 
+    def judge_opcode(self, code=""):
+        """
+        opcode码判断
+        返回一个opcode字典中的键(如"looks")，表示该opcode的分类
+        """
+        try:
+            return opcode[code.split("_")][0]] 
+        except KeyError:
+            self.err.append(code + " Unknown")
+            return "other"
 
+        
 if __name__ == "__main__":
     prog = Scratch()
-    prog.load(input("请输入project.json(尽量只有一行)：\n"))
+    prog.load(input("请输入project.json(只支持有一行)：\n"))
     prog.re_parse()
     print(prog.codes)
+    print(prog._debug)
