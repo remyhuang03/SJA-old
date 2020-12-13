@@ -12,31 +12,6 @@ from tkinter import *
 # 侧边栏宽度：250
 # 上边栏宽度：150左右
 
-# 菜单图片字典
-menu_dic = {0: 'add_file', 1: 'report', 2: 'setting'}
-
-menu_chosen = 0
-def menuclicked(event):  # 菜单被点击函数
-    global menu_chosen
-    y=event.y # 菜单：160-200(加载文件), 240-300（分析报告）,340-400（设置）
-
-    is_chson = FALSE
-
-    # ✨判断菜单出现位置
-    if 160<=y<=200:
-        menu_chosen=0
-        is_chson = TRUE
-    elif 240<=y<=300:
-        menu_chosen=1
-        is_chson = TRUE
-    elif 340<=y<=400:
-        menu_chosen=2
-        is_chson = TRUE
-
-    if is_chson:
-        refresh_interface(menu_chosen)
-
-
 # 主窗口
 top = Tk()
 top.geometry("1024x720+150+0")
@@ -54,10 +29,19 @@ cv.place(x=0, y=0)
 img_title = PhotoImage(file="fore_title.png")
 Label(image=img_title).place(x=-2, y=0)
 
-# 状态侧边选单
-img_side_menu = PhotoImage(file="side_menu.png")
-menu = Label(image=img_side_menu, bd=0)
-menu.place(x=20, y=160)
-menu.bind('<Button-1>', menuclicked)
+#侧边按钮类定义
+class sideBtn(PhotoImage):
+    def __init__(self,file,index):
+        super().__init__(file)
+        self.index=index
+
+# 菜单图片字典
+menu_dic = {0: 'add_file', 1: 'report', 2: 'setting'}
+
+#侧边按钮
+for i in range(0,2):
+    locals()[f'x{i}'] = sideBtn(file=menu_dic[i]+"_chosen.png",index=i)
+
+refresh_interface(0)
 
 top.mainloop()
