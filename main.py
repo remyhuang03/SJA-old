@@ -38,15 +38,17 @@ class sideBtn(Label):
     def __init__(self,image,index):
         super().__init__(image)
         self.place(x=20,y=0+index*80)
+
     def chosen(index):
         self.config(image=PhotoImage(file=menu_dic[self.index]+"_chosen.png")
 
-#侧边按钮
 for i in range(0,2):
     pass
-    #locals()[f'x{i}'] = sideBtn(image=PhotoImage(file=menu_dic[i]+"_chosen.png"),
+
+top.mainloop()
+
+
+#locals()[f'x{i}'] = sideBtn(image=PhotoImage(file=menu_dic[i]+"_chosen.png"),
     #index=i)
    # locals()[f'x{i}'].place(x=20,y=0+i*80)
    # locals()[f'x{i}'].bind(sequence="<enter>",func=self.chosen(self.index))
-
-top.mainloop()
