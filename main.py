@@ -29,19 +29,24 @@ cv.place(x=0, y=0)
 img_title = PhotoImage(file="fore_title.png")
 Label(image=img_title).place(x=-2, y=0)
 
-#侧边按钮类定义
-class sideBtn(PhotoImage):
-    def __init__(self,file,index):
-        super().__init__(file)
-        self.index=index
 
 # 菜单图片字典
 menu_dic = {0: 'add_file', 1: 'report', 2: 'setting'}
 
+#侧边按钮类定义
+class sideBtn(Label):
+    def __init__(self,image,index):
+        super().__init__(image)
+        self.place(x=20,y=0+index*80)
+    def chosen(index):
+        self.config(image=PhotoImage(file=menu_dic[self.index]+"_chosen.png")
+
 #侧边按钮
 for i in range(0,2):
-    locals()[f'x{i}'] = sideBtn(file=menu_dic[i]+"_chosen.png",index=i)
-
-refresh_interface(0)
+    pass
+    #locals()[f'x{i}'] = sideBtn(image=PhotoImage(file=menu_dic[i]+"_chosen.png"),
+    #index=i)
+   # locals()[f'x{i}'].place(x=20,y=0+i*80)
+   # locals()[f'x{i}'].bind(sequence="<enter>",func=self.chosen(self.index))
 
 top.mainloop()
