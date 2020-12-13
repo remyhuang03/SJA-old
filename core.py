@@ -6,7 +6,6 @@ scratch程序解析模块
 import re
 import json
 
-
 # 通过opcode的特征进行积木分类
 # TODO: 待完善
 opcode = {
@@ -27,6 +26,7 @@ class Scratch:
     4. 结果会存在codes里面
     各个函数具体使用方法参见各自的说明
     """
+
     def __init__(self):
         """
         初始化，无需参数
@@ -34,10 +34,11 @@ class Scratch:
         # 存储不同类型代码块的出现次数
         self.codes = {}
         for i in opcode.keys():
-            self.codes[i] = 0   # 初始为0
+            self.codes[i] = 0  # 初始为0
         self.program = ""
         self._debug = {}
-        self.err = []   # 错误信息
+        self.err = []  # 错误信息
+        self.progpy = ""
 
     def load(self, program=""):
         """
@@ -51,18 +52,21 @@ class Scratch:
     def re_parse(self):
         """
         解析程序，无参数，无返回值
-        使用正则表达式解析，json_parse会使用json模块解析(未来加入)
+        使用正则表达式解析
         """
+        self.clean()
         for i in opcode.keys():
-            pattern = r'"opcode":\s{0,1}"'+f'{i}_'
+            pattern = r'"opcode":\s{0,1}"' + f'{i}_'
             # 使用正则找到某种分类的积木个数，并存到codes字典里面。
             self.codes[i] = len(re.findall(pattern, self.program))
             self._debug[i] = pattern
 
     def json_parse(self):
         """
-        此方法暂时不可用，请使用re_parse！
+        解析程序，无参数，无返回值
+        用json库解析
         """
+        self.clean()
         # 把json转换成python类型
         self.progpy = json.loads(self.program)["targets"]
         # 我的天那这json一层一层的真是太不像话了
@@ -70,23 +74,31 @@ class Scratch:
         for j in self.progpy:
             if not j["isStage"]:
                 for i in j["blocks"]:
-                    self.codes[self.judge_opcode(py["targets"][1]["blocks"][i]["opcode"])] += 1
+                    self.codes[self.judge_opcode(j["blocks"][i]["opcode"])] += 1
+
+    def clean(self):
+        """
+        清空codes
+        """
+        self.codes = {}
+        for i in opcode.keys():
+            self.codes[i] = 0  # 初始为0
 
     def judge_opcode(self, code=""):
         """
         opcode码判断
         返回一个opcode字典中的键(如"looks")，表示该opcode的分类
         """
-        try:
-            return opcode[code.split("_")][0]] 
-        except KeyError:
+        if code.split("_")[0] not in opcode:
             self.err.append(code + " Unknown")
             return "other"
+        return code.split("_")[0]
 
-        
+
 if __name__ == "__main__":
     prog = Scratch()
     prog.load(input("请输入project.json(只支持有一行)：\n"))
     prog.re_parse()
     print(prog.codes)
-    print(prog._debug)
+    prog.json_parse()
+    print(prog.codes)
