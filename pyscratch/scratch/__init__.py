@@ -31,16 +31,15 @@ class Scratch(object):
             else:
                 self.sprites.append(Sprite(i))
 
+        self.load_time = 0
+        self.build_time = time() - t
+
         self.statistic = Statistician(self)
         self.comparator = Comparator(self)
         self.report = Reporter(self)
 
-        self.load_time = 0
-        self.build_time = time() - t
-
     def __iter__(self):
-        # TODO
-        pass
+        return self.sprites.__iter__()
 
     def __repr__(self):
         return f'<Scratch file "{self.filename}", {len(self.sprites)}>'

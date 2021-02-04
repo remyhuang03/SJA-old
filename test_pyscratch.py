@@ -10,6 +10,7 @@ from pyscratch.loader import load_from_file_path, load_from_str, load_from_bytes
 
 example_path = os.path.join(os.path.dirname(__file__), 'examples/example.sb3')
 example_path_copy = os.path.join(os.path.dirname(__file__), 'examples/example抄袭版.sb3')
+example_big_scratch_file_path = r'D:\scratch\Flight Simulator 3D v2.8.sb3'
 
 
 class PyScratchTestCase(unittest.TestCase):
@@ -52,6 +53,22 @@ class PyScratchTestCase(unittest.TestCase):
         x = project.comparator.compare(project_copy)
         print(x)
         self.assertTrue(x['code'] > 0.8)
+
+    def test_api(self):
+        project = load_from_file_path(example_big_scratch_file_path)
+        x = 0
+        for i in project:
+            print(i)
+            for j in i:
+                x += 1
+        print(project.stage)
+        print(project.stage.name)
+        x = x + len(project.stage.blocks)
+        print(x)
+        self.assertEqual(x, project.statistic.blocks_count)
+        print(project)
+        print(project.sprites)
+        print(project.filename)
 
 
 if __name__ == "__main__":

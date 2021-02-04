@@ -35,13 +35,13 @@ class Comparator(object):
             if scratch.statistic.category[k] > 30 and v > 30:
                 current_ratio = self.compare_number(
                     scratch.statistic.category[k], v)
-                code_ratio += current_ratio    # *self.compare_number(
+                code_ratio += current_ratio  # *self.compare_number(
                 #    (self.scratch.statistic.category[k]+v)/2,
                 #    self.scratch.statistic
                 # )
                 print(scratch.statistic.category[k], v)
                 s += 1
-        code_ratio = code_ratio/s
+        code_ratio = code_ratio / s
 
         return {
             'variables': self.variables.ratio(),
@@ -57,7 +57,7 @@ class Comparator(object):
         比较两个数字的相似性
         0.9以上即为很相近（抄袭）
         """
-        return ((1-abs(a-b)/((a+b)/2))+1)/2
+        return ((1 - abs(a - b) / ((a + b) / 2)) + 1) / 2
 
     def build(self):
         pass

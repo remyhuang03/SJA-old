@@ -30,9 +30,12 @@ class Sprite(object):
             self.draggable = sprite['draggable']
 
     def __repr__(self):
-        return f"<sprite {self.name} with {len(self.blocks)} blocks>"
+        return f"<Sprite {self.name} with {len(self.blocks)} blocks>"
 
     def __iter__(self):
         return self.blocks.__iter__()
+
+    def __len__(self):
+        return len(self.blocks)
 
     # TODO: 角色的统计

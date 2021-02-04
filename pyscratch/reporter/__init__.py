@@ -14,6 +14,7 @@ class Reporter(object):
     """
     各种结果的呈现方式
     """
+
     def __init__(self, scratch):
         self.scratch = scratch
         self.plt = None
@@ -56,12 +57,14 @@ class Reporter(object):
         label.sort(key=lambda x: self.scratch.statistic.percent_cn[x], reverse=True)
         for i in label:
             text.append(
-                f"{i}:\t[{'=' * round(width * self.scratch.statistic.percent_cn[i] / 100)}"
-                f"{' ' * round(width * self.scratch.statistic.percent_cn[i] / 100)}]"
+                # f": {(10-len(i))*' '}"
+                f"[{'=' * round(width * self.scratch.statistic.percent_cn[i] / 100)}"
+                f"{' ' * round(width * self.scratch.statistic.percent_cn[i] / 100)}]  {i}"
                 f" {self.scratch.statistic.category_cn[i]}  "
-                f"{round(self.scratch.statistic.percent_cn[i] / 100, 1)}%"
+                f"{round(self.scratch.statistic.percent_cn[i] * 100, 1)}%"
             )
-        text.append(f"文件名：{self.scratch.statistic.filename}")
+        text.append(f"文件名：{self.scratch.filename}")
         text.append(f"总块数：{self.scratch.statistic.blocks_count}")
-#        text.append(f"分析用时：{self.scratch.load_time + self.scratch.build_time}")
+        text.append(f"分析用时：{self.scratch.load_time}")
+        #        text.append(f"分析用时：{self.scratch.load_time + self.scratch.build_time}")
         self.txt = "\n".join(text)

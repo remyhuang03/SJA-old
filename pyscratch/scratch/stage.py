@@ -9,4 +9,6 @@ class Stage(Sprite):
     """
     舞台
     """
-    pass
+
+    def __repr__(self):
+        return f"<Stage with {len(self.blocks)} blocks>"

@@ -26,14 +26,14 @@ def load_from_file_path(file_path: str):
     :return: 对应的Scratch对象
     """
     t = time()
-    project = ZipFile(file_path)
-    file = project.read("project.json").decode()
-    project.close()
+    f = ZipFile(file_path)
+    file = f.read("project.json").decode()
+    f.close()
     load_time = time() - t
-    project = Scratch(file)
-    project.load_time += load_time
-    project.filename = basename(file_path)
-    return project
+    scratch = Scratch(file)
+    scratch.load_time += load_time
+    scratch.filename = basename(file_path)
+    return scratch
 
 
 def load_from_bytes(file):

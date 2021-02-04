@@ -82,7 +82,7 @@ class Blocks(object):
             if type(v) == dict:
                 try:
                     self.blocks.append(Block(k, v))
-                except KeyError:
+                except (KeyError, IndexError):
                     self.wrong_blocks.append((k, v))
 
     def count_parts(self):
