@@ -39,7 +39,6 @@ class Comparator(object):
                 #    (self.scratch.statistic.category[k]+v)/2,
                 #    self.scratch.statistic
                 # )
-                print(scratch.statistic.category[k], v)
                 s += 1
         code_ratio = code_ratio / s
 

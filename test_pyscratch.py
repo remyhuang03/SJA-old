@@ -6,11 +6,15 @@ import unittest
 import os
 from zipfile import ZipFile
 
-from pyscratch.loader import load_from_file_path, load_from_str, load_from_bytes
+from pyscratch.loader import \
+    load_from_file_path, load_from_str, load_from_bytes, load_from_kada
 
 example_path = os.path.join(os.path.dirname(__file__), 'examples/example.sb3')
 example_path_copy = os.path.join(os.path.dirname(__file__), 'examples/example抄袭版.sb3')
 example_big_scratch_file_path = r'D:\scratch\Flight Simulator 3D v2.8.sb3'
+example_project_url1 = 'https://kada.163.com/project/4830037-3741258.htm'
+example_project_url2 = 'https://kada.163.com/project/5966352-3592155.htm'
+example_project_url3 = 'https://kada.163.com/project/4528433-3333623.htm'
 
 
 class PyScratchTestCase(unittest.TestCase):
@@ -69,6 +73,21 @@ class PyScratchTestCase(unittest.TestCase):
         print(project)
         print(project.sprites)
         print(project.filename)
+
+    def test_load_from_kada(self):
+        print("下载项目1...")
+        project1 = load_from_kada(example_project_url1)
+        print("下载项目2...")
+        project2 = load_from_kada(example_project_url2)
+        print("下载项目3...")
+        project3 = load_from_kada(example_project_url3)
+        print("比较...")
+        x1 = project1.comparator.compare(project2)
+        x2 = project3.comparator.compare(project2)
+        self.assertTrue(x1['code'] > 0.8)
+        print("结果：")
+        print("两个已知抄袭的作品的相似度:", x1)
+        print("半毛钱关系都没有的相似度:", x2)
 
 
 if __name__ == "__main__":

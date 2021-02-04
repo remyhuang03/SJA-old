@@ -61,7 +61,7 @@ class Reporter(object):
                 f"[{'=' * round(width * self.scratch.statistic.percent_cn[i] / 100)}"
                 f"{' ' * round(width * self.scratch.statistic.percent_cn[i] / 100)}]  {i}"
                 f" {self.scratch.statistic.category_cn[i]}  "
-                f"{round(self.scratch.statistic.percent_cn[i] * 100, 1)}%"
+                f"{round(self.scratch.statistic.percent_cn[i], 1)}%"
             )
         text.append(f"文件名：{self.scratch.filename}")
         text.append(f"总块数：{self.scratch.statistic.blocks_count}")
