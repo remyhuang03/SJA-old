@@ -20,7 +20,7 @@ tutorial.py
 """
 
 author = ['kunkun']
-__version__ = '2.0.2'
+__version__ = '2.1.1'
 
 pyscratch_logo = r"""
  ____        ____                 _       _
