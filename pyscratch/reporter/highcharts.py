@@ -44,8 +44,8 @@ $(document).ready(function() {
       type: 'pie',
       name: 'Browser share',
       data: [
-      {% for i in data %}
-         ['{{ i[0] }}',   {{ i[1] }}],
+      {% for k, v in data.items() %}
+         ['{{ k }}',   {{ v }}],
       {% endfor %}
       ]
    }];

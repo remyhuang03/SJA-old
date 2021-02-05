@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}{% endblock %}
+
+{% block title %}
+    404 - 页面没找到
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 style="text-align: center; margin-top: 50px;margin-bottom: 40px;">页面没找到！</h2>
+                <h3 style="text-align: center;" class="text-secondary">404 Not Found</h3>
+                <div class="col-12" style="margin: 30px;">
+                    <a href="{{ url_for('sjaweb.index') }}" class="btn btn-info float-right">返回分析器</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

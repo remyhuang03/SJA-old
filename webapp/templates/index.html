@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    {{ dropzone.load_css() }}
+    {{ dropzone.style('margin: 20px; border: 2px dashed #ff7f24; min-height: 200px;') }}
+    {{ dropzone.load_js() }}
+{% endblock %}
+
+{% block body %}
+    {{ dropzone.config() }}
+    <div class="container col-md-12">
+        <h2 style="margin: 20px; text-align: center;">Scratch程序分析器</h2>
+        <h3 style="margin: 5px; text-align: center; font-size: 18px;" class="text-secondary">
+            核心版本：{{ core_version }}
+        </h3>
+
+        <h3 style="margin: 20px;">scratch3文件上传：</h3>
+        {{ dropzone.create(action=url_for('sjaweb.index')) }}
+        <a class="btn btn-success float-right" href="{{ url_for('sjaweb.report') }}" id="check_report">查看结果</a>
+        <div class="alert alert-primary" style="margin-top: 100px;">
+            <strong>小提示：</strong>
+            {{ tip }}
+        </div>
+    </div>
+
+{% endblock %}

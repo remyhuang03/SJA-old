@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}scratch程序分析器{% endblock %}</title>
+    <link rel="icon" href="{{ url_for('static', filename='sjaweb/favicon.ico') }}">
+
+    {{ bootstrap.load_css() }}
+    {{ bootstrap.load_js() }}
+    <style>
+        #footer {
+            font-size: 10px;
+            text-align: center;
+            color: grey;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+            margin-top: 50px;
+        }
+    </style>
+    {% block head %}
+
+    {% endblock %}
+</head>
+
+<body>
+<!-- nav -->
+<nav class="navbar navbar-expand-sm bg-info navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link text-primary" style="font-size: 20px;" href="{{ url_for('sjaweb.index') }}">
+                scratch分析器
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('sjaweb.help_page') }}" style="margin: 2px;">帮助</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('sjaweb.about') }}" style="margin: 2px;">关于</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"
+               href="https://gitee.com/gitkunkun/sja-bin"
+               style="margin: 2px"
+               target="_blank"
+               data-toggle="tooltip"
+               title="下载离线版本！"
+            >
+                下载
+            </a>
+        </li>
+        <li class="nav-item">
+            <a target="_self"
+               class="nav-link"
+               style="margin: 2px;"
+               href="{{ url_for('sjaweb.load_url') }}"
+               data-toggle="tooltip"
+               title="分析一个发布在kada社区的scratch3程序">
+                从kada获取
+            </a>
+        </li>
+        <li class="nav-item">
+            <a target="_blank"
+               class="nav-link"
+               style="margin: 2px;"
+               href="https://kada.163.com/project/v3/create.htm?utm_source=&utm_medium=nav_button&utm_campaign=business&utm_content=sc"
+               data-toggle="tooltip"
+               title="可以实现scratch2转scratch3哦！">
+                在线编辑器
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<div style="margin: 20px">
+    {% for message in get_flashed_messages(with_categories=True) %}
+        <div class="alert alert-{{ message[0] }}" role="alert" style="margin: 10px">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message[1] }}
+        </div>
+    {% endfor %}
+</div>
+{% block body %}
+{% endblock %}
+<div>
+    <div id="footer" class="float-none">
+        <a href="https://github.com/kunkunhub"
+           style="color: grey"
+           data-toggle="tooltip"
+           title="Hello!">kunkun</a> /
+        <a href="https://github.com/GuYan1024/SJA" style="color: grey">源码仓库</a>/
+        <a href="https://gitee.com/gitkunkun/sjaweb" style="color: grey">web版源码仓库</a>
+
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+</body>
+
+</html>

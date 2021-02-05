@@ -1,0 +1,12 @@
+flask~=1.1.2
+python-dotenv~=0.15.0
+click~=7.1.2
+wtforms~=2.3.3
+markdown~=3.3.3
+requests~=2.25.1
+flask_debugtoolbar
+bootstrap_flask
+flask_dropzone
+flask_wtf
+flake8
+coverage

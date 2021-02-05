@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    从kada导入
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h2 style="text-align: center; margin: 50px;">从kada社区加载程序并分析</h2>
+    </div>
+    <form method="post">
+        <div class="container">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div class="form-group" id="url_input_group">
+                {{ form.url.label }}
+                {{ form.url(class='form-control') }}
+            </div>
+            {{ form.submit(class='btn btn-primary') }}
+        </div>
+    </form>
+{% endblock %}
+
