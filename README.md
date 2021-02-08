@@ -93,7 +93,9 @@ pyscratch在制作时，注重了可维护性和扩展性，大量运用了面�
 ## 主要开发者
 
 [kunkun](https://github.com/kunkunhub) : 核心分析代码、维护人
+
 [sun-xx](https://github.com/sun-xx) : UI
+
 [孤言](https://github.com/GuYan1024) : 菜鸡开发者
 
 ## 参与贡献
