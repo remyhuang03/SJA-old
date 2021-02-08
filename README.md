@@ -1,7 +1,8 @@
 # Scratch Json Analyser
 **这个文档的一些执行结果已经过时，将会在不久的未来更新**
-更快捷的使用方式：  
-**[分析器网页版](kunkunpaw.pythonanywhere.com)：kunkunpaw.pythonanywhere.com**  
+更快捷的使用方式：
+**[分析器网页版](http://kunkunpaw.pythonanywhere.com/)**  
+
 **sja核心即将弃用，换成pyscratch(3天3夜赶制的结果)，更多关于新核心的信息，在文档末尾有介绍**  
 
 简介
