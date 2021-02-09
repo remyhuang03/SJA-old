@@ -1,8 +1,7 @@
 """
 视图模块
 """
-import re
-import requests
+
 import secrets
 import os
 from random import randint
@@ -104,10 +103,6 @@ def report():
     if 'name' in session:
         file_name = session['name']
         if file_name in dd.dict:
-            try:
-                charts = pie(dd[file_name])
-            except (KeyError, ValueError):
-                charts = "出错啦......"
             return render_template(
                 'report.html',
                 report=dd[file_name],
@@ -115,7 +110,7 @@ def report():
                 round=round,
                 sort_key=lambda k: k[1],
                 file_name=file_name,
-                charts=charts,
+                charts=pie(dd[file_name]),
                 needs=needs
             )
 

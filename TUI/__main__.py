@@ -4,9 +4,12 @@
 
 from tkinter.filedialog import askopenfilename
 import sys
+import os
 
 from pyscratch.loader import load_from_file_path, load_from_kada
 from pyscratch import sja_logo
+
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 
 def one():
