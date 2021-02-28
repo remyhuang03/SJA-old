@@ -1,3 +1,5 @@
+⚠提醒：您可以在[Gitee](https://gitee.com/gitkunkun/SJA)上访问本项目
+
 # Scratch Json Analyser
 **个文档的一些执行结果已经过时，将会在不久的未来更新**  
 **sja核心即将弃用，换成pyscratch(3天3夜赶制的结果)，更多关于新核心的信息，在文档末尾有介绍**  
