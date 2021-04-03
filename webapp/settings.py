@@ -12,8 +12,8 @@ class BaseConfig(object):
 
     # 文件上传设置
     DROPZONE_MAX_FILES = 1
-    DROPZONE_MAX_FILE_SIZE = 20
-    MAX_CONTENT_LENGTH = 20 * 1024 * 1024
+    DROPZONE_MAX_FILE_SIZE = 50
+    # MAX_CONTENT_LENGTH = 20 * 1024 * 1024
     DROPZONE_ALLOWED_FILE_CUSTOM = True
     DROPZONE_ALLOWED_FILE_TYPE = '.sb3'
     DROPZONE_ENABLE_CSRF = True  # csrf保护
@@ -38,6 +38,7 @@ class BaseConfig(object):
 class DevConfig(BaseConfig):
     CACHE_TYPE = "null"
     FLASK_DEBUG = True
+
 
 class ProConfig(BaseConfig):
     FLASK_DEBUG = False

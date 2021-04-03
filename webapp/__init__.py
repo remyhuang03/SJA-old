@@ -16,7 +16,7 @@ from flask_wtf import CSRFProtect
 from webapp.models import DataDict
 from webapp.settings import config
 
-from webapp.views import sjaweb_bp
+from webapp.blueprints.sja import sjaweb_bp
 
 
 # 扩展
