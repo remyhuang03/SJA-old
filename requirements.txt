@@ -1,3 +1,4 @@
 requests
 jinja2
 matplotlib
+pygame
