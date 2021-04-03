@@ -1,6 +1,9 @@
 # Scratch Json Analyser
+
 ⚠提醒：您可以在[Gitee](https://gitee.com/gitkunkun/SJA)上访问主仓库
+
 **个别文档的一些执行结果已经过时，将会在不久的未来更新**  
+
 **sja核心已经弃用，换成pyscratch作为分析器核心，请使用pyscratch模块分析**
 ## 简介
 
