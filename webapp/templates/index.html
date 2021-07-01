@@ -2,24 +2,30 @@
 
 {% block head %}
     {{ dropzone.load_css() }}
-    {{ dropzone.style('margin: 20px; border: 2px dashed #ff7f24; min-height: 200px;') }}
+    {{ dropzone.style('border: 2px dashed #ddd; margin-left: 10%; margin-right: 10%; margin-top: 50px; margin-bottom: 50px; min-height: 200px;') }}
     {{ dropzone.load_js() }}
 {% endblock %}
 
 {% block body %}
     {{ dropzone.config() }}
-    <div class="container col-md-12">
+    <div class="uk-container">
         <h2 style="margin: 20px; text-align: center;">Scratch程序分析器</h2>
         <h3 style="margin: 5px; text-align: center; font-size: 18px;" class="text-secondary">
             核心版本：{{ core_version }}
         </h3>
 
-        <h3 style="margin: 20px;">scratch3文件上传：</h3>
+        <h3>
+            Scratch3文件上传：
+            <small>
+                <a class="uk-button uk-button-default uk-button-primary" style="float: right" href="{{ url_for('sjaweb.report') }}" id="check_report">查看结果</a>
+            </small>
+        </h3>
         {{ dropzone.create(action=url_for('sjaweb.index')) }}
-        <a class="btn btn-success float-right" href="{{ url_for('sjaweb.report') }}" id="check_report">查看结果</a>
-        <div class="alert alert-primary" style="margin-top: 100px;">
-            <strong>小提示：</strong>
-            {{ tip }}
+        <div class="uk-container">
+            <div class="uk-alert-primary" uk-alert>
+                <strong>小提示：</strong>
+                {{ tip }}
+            </div>
         </div>
     </div>
 

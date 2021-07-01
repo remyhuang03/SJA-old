@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="UTF-8"/>
-    <title>{% block title %}scratch程序分析器{% endblock %}</title>
+    <title>{% block title %}Scratch程序分析器{% endblock %}</title>
     <link rel="icon" href="{{ url_for('static', filename='sjaweb/favicon.ico') }}">
 
-    {{ bootstrap.load_css() }}
-    {{ bootstrap.load_js() }}
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/css/uikit.min.css" />
     <style>
         #footer {
             font-size: 10px;
@@ -21,12 +21,17 @@
     {% block head %}
 
     {% endblock %}
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/js/uikit-icons.min.js"></script>
+
+    <script src="{{ url_for('static', filename='echarts.min.js') }}"></script>
 </head>
 
 <body>
 <!-- nav -->
-<nav class="navbar navbar-expand-sm bg-info navbar-dark">
-    <ul class="navbar-nav">
+<nav class="uk-navbar-container uk-container" uk-navbar>
+    <!-- <ul class="navbar-nav">
         <li class="nav-item">
             <a class="nav-link text-primary" style="font-size: 20px;" href="{{ url_for('sjaweb.index') }}">
                 scratch分析器
@@ -69,35 +74,39 @@
                 在线编辑器
             </a>
         </li>
-    </ul>
+    </ul> -->
+    <div class="uk-navbar-left">
+        <a class="uk-navbar-item uk-logo uk-active" href="/">SJA</a>
+        <ul class="uk-navbar-nav">
+            <li><a href="{{ url_for('sjaweb.help_page') }}">帮助</a></li>
+            <li><a href="{{ url_for('sjaweb.about') }}">关于</a></li>
+            <li><a href="https://gitee.com/gitkunkun/sja-bin" target="_blank">下载</a></li>
+            <li><a href="{{ url_for('sjaweb.load_url') }}" target="_blank">从Kada获取</a></li>
+            <li><a href="https://kada.163.com/project/v3/create.htm?utm_source=&utm_medium=nav_button&utm_campaign=business&utm_content=sc" target="_blank">在线编辑器</a></li>
+        </ul>
+    </div>
 </nav>
 
 <div style="margin: 20px">
     {% for message in get_flashed_messages(with_categories=True) %}
-        <div class="alert alert-{{ message[0] }}" role="alert" style="margin: 10px">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <div class="alert uk-alert-{{ message[0] }}" uk-alert style="margin: 10px">
             {{ message[1] }}
+            <a class="uk-alert-close" uk-close></a>
         </div>
     {% endfor %}
 </div>
 {% block body %}
 {% endblock %}
 <div>
-    <div id="footer" class="float-none">
-        <a href="https://github.com/kunkunhub"
+    <div id="footer" class="float-none" style="margin-bottom: 20px">
+        <a href="https://gitee.com/gitkunkun"
            style="color: grey"
-           data-toggle="tooltip"
-           title="Hello!">kunkun</a> /
-        <a href="https://github.com/GuYan1024/SJA" style="color: grey">源码仓库</a>/
-        <a href="https://gitee.com/gitkunkun/sjaweb" style="color: grey">web版源码仓库</a>
-
+           title="Hello!">
+           kunkun
+        </a> /
+        <a href="https://gitee.com/gitkunkun/SJA" style="color: grey">源码仓库</a>
     </div>
 </div>
-<script>
-    $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-</script>
 </body>
 
 </html>

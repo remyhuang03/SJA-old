@@ -4,13 +4,13 @@
 
 {% block body %}
     <h2 style="text-align: center; margin: 30px;">帮助</h2>
-    <div class="container">
+    <div class="uk-container">
         <div class="row">
             <div class="col-12" style="margin: 30px;">
                 {{ help_html | safe }}
             </div>
             <div class="col-12" style="margin: 30px;">
-                <a href="{{ url_for('sjaweb.index') }}" class="btn btn-info float-left">返回分析器</a>
+                <a href="{{ url_for('sjaweb.index') }}" class="uk-button uk-button-secondary" style="float: right">返回分析器</a>
             </div>
         </div>
     </div>

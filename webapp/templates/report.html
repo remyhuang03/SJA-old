@@ -8,30 +8,23 @@
 
 {% block body %}
 <h2 style="text-align: center;margin: 20px;">分析结果</h2>
-    <div class="container">
+    <div class="uk-container">
         {% for k, v in sorted(report.statistic.percent_cn.items(),key=sort_key, reverse=True) %}
-            <div class="progress" style="margin: 10px;">
-                <div class="progress-bar"
-                     style="width:{{ v }}%; color: black;cursor:pointer;"
-                     data-toggle="tooltip"
-                     title="{{ k }} {{ v }}% {{ report.statistic.category_cn[k] }}块">
-                    {{ k }} {{ v }}% {{ report.statistic.category_cn[k] }}块
-                </div>
-            </div>
+            <span>{{ k }} {{ v }}% {{ report.statistic.category_cn[k] }}块</span>
+            <progress class="uk-progress" value="{{ v }}" max="100"></progress>
+            <p></p>
         {% endfor %}
         <div style="margin: 20px">
-            代码总块数：{{ report.statistic.block_count }} <br>
+            代码总块数：{{ report.statistic.blocks_count }} <br>
             代码片段总数：{{ report.statistic.parts_count }}<br>
             分析总用时：{{ round(report.load_time + report.build_time, 4) }}s <br>
         </div>
-
     </div>
-    <div class="container" id="container"></div>
+    <div class="uk-container" id="container"></div>
     {{ charts | safe }}
-    <div class="container">
-
-        <div style="margin: 30px">
-            <a href="{{ url_for('sjaweb.index') }}" class="btn btn-info float-right">返回分析器</a>
+    <div class="uk-container">
+        <div>
+            <a href="{{ url_for('sjaweb.index') }}" class="uk-button uk-button-secondary" style="float: right">返回分析器</a>
         </div>
     </div>
 {% endblock %}

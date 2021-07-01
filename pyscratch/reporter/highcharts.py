@@ -45,7 +45,7 @@ $(document).ready(function() {
       name: 'Browser share',
       data: [
       {% for k, v in data.items() %}
-         ['{{ k }}',   {{ v }}],
+         ['{{ k }}',{{ v[1] }}],
       {% endfor %}
       ]
    }];
@@ -83,11 +83,15 @@ def pie(scratch):
     """
     :param scratch: Scratch对象，被统计过的
     :return: Highcharts Javascript
-   """
+    """
+    percent = scratch.statistic.percent_cn
+    data = {}
+    for i in sorted(percent.keys(), key=lambda x: percent[x]):
+        data[i] = (i, percent[i])
 
     return script.render(
         chart_title=scratch.filename,
-        data=scratch.statistic.percent_cn
+        data=data
     )
 
 

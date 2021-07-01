@@ -18,7 +18,7 @@ class Reporter(object):
     def __init__(self, scratch):
         self.scratch = scratch
         self.plt = None
-        self.plot()
+        # self.plot()
         self.pie_html = pie(scratch)
         self.full_html_pie = full_html_pie(scratch)
 

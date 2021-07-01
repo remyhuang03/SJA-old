@@ -5,17 +5,17 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="uk-container">
         <h2 style="text-align: center; margin: 50px;">从kada社区加载程序并分析</h2>
     </div>
-    <form method="post">
-        <div class="container">
+    <form method="post" class="uk-form-stacked">
+        <div class="uk-container">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <div class="form-group" id="url_input_group">
-                {{ form.url.label }}
-                {{ form.url(class='form-control') }}
+            <div class="uk-margin" id="url_input_group">
+                {{ form.url.label(class="uk-form-label") }}
+                {{ form.url(class='uk-input') }}
             </div>
-            {{ form.submit(class='btn btn-primary') }}
+            {{ form.submit(class='uk-button uk-button-primary') }}
         </div>
     </form>
 {% endblock %}

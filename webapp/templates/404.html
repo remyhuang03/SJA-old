@@ -7,13 +7,14 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="uk-container">
         <div class="row">
             <div class="col-12">
-                <h2 style="text-align: center; margin-top: 50px;margin-bottom: 40px;">页面没找到！</h2>
-                <h3 style="text-align: center;" class="text-secondary">404 Not Found</h3>
+                <h2 style="text-align: center; margin-top: 50px;">页面没找到</h2>
+                <hr class="uk-divider-small uk-position-top-center" />
+                <h3 style="text-align: center;" class="uk-text-meta">404 Not Found</h3>
                 <div class="col-12" style="margin: 30px;">
-                    <a href="{{ url_for('sjaweb.index') }}" class="btn btn-info float-right">返回分析器</a>
+                    <a href="{{ url_for('sjaweb.index') }}" class="uk-button uk-button-secondary">返回分析器</a>
                 </div>
             </div>
         </div>

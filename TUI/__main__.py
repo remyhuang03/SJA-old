@@ -24,6 +24,7 @@ def from_kada():
     """\
 从kada上加载一个程序
 """
+    print("\033[31m警告：严禁利用本工具抄袭或帮助抄袭不准抄袭的作品，否则后果自负！\033[0m")
     project = load_from_kada(input('请输入一个项目地址：'))
     print(project.report.txt)
 
